@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cp102-bot.github.io/ai-daohang/sitemap.xml
