@@ -275,30 +275,7 @@ body {
 }
 .stat strong { color: var(--text); font-weight: 600; }
 
-/* ======== Ad Banner ======== */
-.ad-banner {
-  margin-bottom: 14px; padding: 14px 20px;
-  border-radius: var(--radius);
-  border: 1px dashed rgba(99, 102, 241, 0.2);
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  text-align: center;
-  cursor: pointer;
-  transition: all var(--transition);
-  display: none;
-  position: relative;
-  animation: adPulse 2s ease-in-out infinite;
-}
-@keyframes adPulse {
-  0%, 100% { border-color: rgba(99, 102, 241, 0.15); }
-  50% { border-color: rgba(99, 102, 241, 0.4); }
-}
-.ad-banner:hover { border-color: var(--accent); border-style: solid; box-shadow: 0 4px 20px var(--accent-glow); }
-.ad-banner.active { display: block; }
-.ad-banner .ad-label { position: absolute; top: 4px; right: 10px; font-size: 10px; color: var(--text2); opacity: 0.5; }
-.ad-banner.dormant { border-style: dashed; opacity: 0.4; }
-.ad-banner.dormant:hover { opacity: 0.8; }
+
 
 /* ======== Card Grid ======== */
 .grid {
@@ -562,83 +539,7 @@ body {
   .icon-btn { font-size: 14px; padding: 6px 10px; }
 }
 
-/* ======== Friends Section ======== */
-.friends-section {
-  margin-top: 40px;
-  padding-top: 28px;
-  border-top: 1px solid var(--border);
-}
-.friends-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text);
-  margin-bottom: 16px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.friends-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 10px;
-}
-.friend-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  text-decoration: none;
-  color: var(--text);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-}
-.friend-card:hover {
-  border-color: var(--accent);
-  background: var(--card-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px var(--accent-glow);
-}
-.friend-icon {
-  font-size: 28px;
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-.friend-card:hover .friend-icon {
-  transform: scale(1.15);
-}
-.friend-info {
-  flex: 1;
-  min-width: 0;
-}
-.friend-name {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 3px;
-}
-.friend-desc {
-  display: block;
-  font-size: 12px;
-  color: var(--text2);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.friend-arrow {
-  font-size: 16px;
-  color: var(--text2);
-  flex-shrink: 0;
-  transition: transform 0.2s ease, color 0.2s ease;
-}
-.friend-card:hover .friend-arrow {
-  transform: translateX(3px);
-  color: var(--accent2);
-}
+
 
 /* ======== Reduced Motion ======== */
 @media(prefers-reduced-motion: reduce) {
@@ -799,10 +700,7 @@ body {
   <div class="nav" id="nav"></div>
   <div class="sub-nav" id="subNav" style="display:none"></div>
 
-  <div class="ad-banner dormant" id="adBanner" onclick="window.open(this.dataset.url||'#','_blank')">
-    <span class="ad-label">AD</span>
-    <div class="ad-content" id="adContent">📢 <strong>广告位</strong> — 欢迎合作</div>
-  </div>
+  
 
   <div class="stats">
     <span class="stat" id="totalStat">共 0 个工具</span>
@@ -811,28 +709,6 @@ body {
     </div>
   </div>
   <div class="grid" id="grid"></div>
-
-  <div class="friends-section" id="friendsSection">
-    <h3 class="friends-title">🔗 <span id="friendsTitle">友情链接</span></h3>
-    <div class="friends-grid">
-      <a class="friend-card" href="https://wzrysjglz.onrender.com/" target="_blank" rel="noopener">
-        <span class="friend-icon">⚔️</span>
-        <div class="friend-info">
-          <span class="friend-name">王者荣耀世界攻略站</span>
-          <span class="friend-desc">开放世界探险攻略 & PVP对战技巧收录</span>
-        </div>
-        <span class="friend-arrow">↗</span>
-      </a>
-      <a class="friend-card" href="https://personality-test-site-jaxmj5zmn-cp102-s-projects.vercel.app/" target="_blank" rel="noopener">
-        <span class="friend-icon">🧩</span>
-        <div class="friend-info">
-          <span class="friend-name">乱序人格研究所</span>
-          <span class="friend-desc">科学人格测试，深度心理分析报告</span>
-        </div>
-        <span class="friend-arrow">↗</span>
-      </a>
-    </div>
-  </div>
 </div>
 
 <div class="overlay" id="overlay"></div>
@@ -1223,31 +1099,7 @@ document.getElementById('overlay').addEventListener('click', () => {
   document.getElementById('overlay').classList.remove('active');
 });
 
-/* ========== AD ========== */
-var adList = [
-  {url:'https://cp102-bot.github.io/oil-scraper/', text:'🛢️ <strong>原油数据采集器</strong> — 成品零反爬，WTI价格+新闻一键采集 ¥399'},
-  {url:'https://wzrysjglz.onrender.com/', text:'⚔️ <strong>王者荣耀世界攻略站</strong> — 开放世界探险攻略 + PVP技巧收录'},
-  {url:'https://personality-test-site-jaxmj5zmn-cp102-s-projects.vercel.app/', text:'🧩 <strong>乱序人格研究所</strong> — 科学人格测试，发现未知的自己'},
-];
-var adIndex = 0;
-function setAd(url, text) {
-  const banner = document.getElementById('adBanner');
-  const content = document.getElementById('adContent');
-  if (!url || !text) {
-    banner.classList.add('dormant'); banner.dataset.url = '';
-    content.innerHTML = '📢 <strong>广告位</strong> — 欢迎合作';
-    return;
-  }
-  banner.classList.remove('dormant'); banner.classList.add('active');
-  banner.dataset.url = url; content.innerHTML = text;
-}
-function rotateAd() {
-  var ad = adList[adIndex % adList.length];
-  setAd(ad.url, ad.text);
-  adIndex++;
-}
-rotateAd();
-setInterval(rotateAd, 10000);
+
 
 /* ========== FEEDBACK ========== */
 var fbType = 'bug';
