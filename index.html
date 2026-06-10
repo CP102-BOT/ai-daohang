@@ -275,7 +275,64 @@ body {
 }
 .stat strong { color: var(--text); font-weight: 600; }
 
+/* ======== Sort Controls ======== */
+.sort-bar { display: flex; gap: 6px; align-items: center; margin-left: auto; }
+.sort-btn {
+  padding: 6px 14px; border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text2); cursor: pointer;
+  font-size: 12px; font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.sort-btn:hover { border-color: var(--accent); color: var(--text); }
+.sort-btn.active { background: rgba(99, 102, 241, 0.15); color: var(--accent2); border-color: rgba(99, 102, 241, 0.4); }
 
+/* ======== Scene Nav ======== */
+.scene-nav { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; overflow-x: auto; padding-bottom: 2px; }
+.scene-btn {
+  padding: 7px 16px; border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--text2); cursor: pointer;
+  font-size: 12px; font-weight: 500;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.scene-btn:hover { border-color: var(--accent2); color: var(--text); transform: translateY(-1px); }
+.scene-btn.active {
+  background: linear-gradient(135deg, var(--accent), #7c3aed);
+  color: #fff; border-color: transparent;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+/* ======== Recent Visits ======== */
+.recent-bar {
+  display: flex; gap: 8px; align-items: center;
+  margin-bottom: 14px; overflow-x: auto;
+  padding: 8px 14px;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 13px;
+}
+.recent-bar .label { color: var(--text2); white-space: nowrap; font-size: 12px; font-weight: 500; }
+.recent-item {
+  padding: 4px 12px; border-radius: 14px;
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--accent2); cursor: pointer;
+  font-size: 12px; white-space: nowrap;
+  transition: all 0.2s ease;
+  text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+}
+.recent-item:hover { background: rgba(99, 102, 241, 0.2); transform: translateY(-1px); }
 
 /* ======== Card Grid ======== */
 .grid {
@@ -514,7 +571,11 @@ body {
 
 /* ======== Empty State ======== */
 .empty-state { text-align: center; padding: 60px 20px; color: var(--text2); }
-.empty-state .big { font-size: 56px; margin-bottom: 16px; animation: float 3s ease-in-out infinite; }
+.empty-state .big { font-size: 56px; margin-bottom: 16px; }
+.empty-state .hint { font-size: 13px; margin-top: 12px; color: var(--text2); line-height: 1.6; }
+.empty-state .hint a { color: var(--accent2); cursor: pointer; text-decoration: underline; }
+.empty-state .hint a:hover { color: var(--accent); }
+.tag.hot { background: rgba(239, 68, 68, 0.15); color: #f87171; }
 
 /* ======== Responsive ======== */
 @media(max-width:768px) {
@@ -531,8 +592,12 @@ body {
   .nav-item { padding: 6px 12px; font-size: 12px; }
   .sub-nav { gap: 3px; margin-bottom: 10px; }
   .sub-nav-item { padding: 5px 10px; font-size: 11px; }
-  .stats { gap: 8px; margin-bottom: 10px; }
+  .stats { gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
   .stat { font-size: 12px; padding: 6px 12px; }
+  .sort-bar { margin-left: 0; }
+  .sort-btn { font-size: 11px; padding: 4px 10px; }
+  .scene-btn { font-size: 11px; padding: 5px 12px; }
+  .recent-bar { font-size: 12px; padding: 6px 10px; }
   .sidebar { width: 300px; right: -320px; }
   .back-top { bottom: 20px; right: 16px; width: 40px; height: 40px; font-size: 16px; }
   .header-actions { gap: 4px; }
@@ -698,12 +763,21 @@ body {
 
 <div class="container">
   <div class="nav" id="nav"></div>
+  <div class="scene-nav" id="sceneNav"></div>
   <div class="sub-nav" id="subNav" style="display:none"></div>
 
-  
+  <div class="recent-bar" id="recentBar" style="display:none">
+    <span class="label" id="recentLabel">🕐 最近访问</span>
+    <div id="recentList"></div>
+  </div>
 
   <div class="stats">
     <span class="stat" id="totalStat">共 0 个工具</span>
+    <div class="sort-bar">
+      <button class="sort-btn active" data-sort="default" id="sortDefault">📌 默认</button>
+      <button class="sort-btn" data-sort="hot" id="sortHot">🔥 热门</button>
+      <button class="sort-btn" data-sort="rating" id="sortRating">⭐ 评分</button>
+    </div>
     <div id="eduBanner" class="stat" style="display:none;background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(168,85,247,0.08));border-color:rgba(139,92,246,0.2);padding:12px 20px;font-size:13px;width:100%;border-radius:14px">
       🎓 <strong>大学专区</strong> — 专为大学生打造的 AI 工具合集：论文写作、文献搜索、数学计算、PPT制作、课堂笔记 🧙 <strong style="color:#f87171">需魔法</strong> 标签表示需要科学上网
     </div>
@@ -852,9 +926,23 @@ const toolsData = [
   {id:"o10",name:"Mem",icon:"🧠",cat:"other",catName:"其他工具",rating:4.1,url:"https://mem.ai",tags:["AI笔记","知识管理","自动整理","需魔法"],price:"freemium",desc:"AI 驱动的笔记工具，自动整理和关联你的笔记内容，像你的第二个大脑。",descEn:"AI-powered notes app that automatically organizes and connects your notes. Your second brain."},
 ];
 
+/* ========== SCENES ========== */
+const scenes = [
+  {key:'all',name:{zh:'🏠 全部场景',en:'🏠 All'}},
+  {key:'write-paper',name:{zh:'📝 写论文',en:'📝 Write Paper'},match:t=>['e1','e2','e3','e6','e7','e17','e18','e19'].includes(t.id)},
+  {key:'make-video',name:{zh:'🎬 做视频',en:'🎬 Make Video'},match:t=>t.cat==='audio'&&['a3','a4','a5','a6','a7','a8','a9','a10','a11'].includes(t.id)},
+  {key:'draw-image',name:{zh:'🎨 画图',en:'🎨 Draw'},match:t=>t.cat==='image'},
+  {key:'write-code',name:{zh:'💻 写代码',en:'💻 Code'},match:t=>t.cat==='code'},
+  {key:'translate',name:{zh:'🌐 翻译',en:'🌐 Translate'},match:t=>['e8','e9'].includes(t.id)},
+  {key:'presentation',name:{zh:'📊 做PPT',en:'📊 PPT'},match:t=>['w7','w8','e15','e16'].includes(t.id)},
+  {key:'music-audio',name:{zh:'🎵 音乐/音频',en:'🎵 Music'},match:t=>['a1','a2','a12'].includes(t.id)},
+];
+
 /* ========== STATE ========== */
-let currentCat = 'all', searchQuery = '', currentSubCat = 'all';
+let currentCat = 'all', searchQuery = '', currentSubCat = 'all', currentScene = 'all', sortMode = 'default';
 let favorites = JSON.parse(localStorage.getItem('ai_fav')||'[]');
+let clickCounts = JSON.parse(localStorage.getItem('ai_clicks')||'{}');
+let recentVisits = JSON.parse(localStorage.getItem('ai_recent')||'[]');
 let lang = localStorage.getItem('ai_lang') || 'zh';
 
 const cats = [
@@ -892,6 +980,10 @@ const i18n = {
   price_free:{zh:'免费',en:'Free'},price_paid:{zh:'付费',en:'Paid'},price_freemium:{zh:'免费+',en:'Free+'},
   vpnTag:{zh:'🧙 需魔法',en:'🧙 VPN'},
   eduBanner:{zh:'🎓 <strong>大学专区</strong> — 专为大学生打造的 AI 工具合集：论文写作、文献搜索、数学计算、PPT制作、课堂笔记 🧙 <strong style="color:#f87171">需魔法</strong> 标签表示需要科学上网',en:'🎓 <strong>Academia</strong> — AI tools for students: paper writing, literature search, math, PPTs, note-taking 🧙 <strong style="color:#f87171">Need VPN</strong> means requiring internet proxy'},
+  recentLabel:{zh:'🕐 最近访问',en:'🕐 Recent'},
+  emptyHint:{zh:'试试换个关键词搜索，或者浏览 <a onclick="resetAll()">全部工具</a>',en:'Try another keyword, or browse <a onclick="resetAll()">all tools</a>'},
+  sortDefault:{zh:'📌 默认',en:'📌 Default'},sortHot:{zh:'🔥 热门',en:'🔥 Hot'},sortRating:{zh:'⭐ 评分',en:'⭐ Rating'},
+  feedbackSent:{zh:'已跳转到 GitHub Issues，请确认提交。',en:'Redirected to GitHub Issues. Please confirm submission.'},
 };
 
 /* ========== PARTICLES ========== */
@@ -958,10 +1050,49 @@ function renderNav() {
       nav.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentCat = btn.dataset.cat;
-      currentSubCat = 'all';
-      animateRender(() => render());
+      currentSubCat = 'all'; currentScene = 'all';
+      animateRender(() => { render(); renderSceneNav(); });
     });
   });
+}
+
+function renderSceneNav() {
+  const nav = document.getElementById('sceneNav');
+  const show = currentCat === 'all' && !searchQuery;
+  nav.style.display = show ? 'flex' : 'none';
+  if (!show) return;
+  nav.innerHTML = scenes.map(s =>
+    `<button class="scene-btn${currentScene===s.key?' active':''}" data-scene="${s.key}">${s.name[lang]}</button>`
+  ).join('');
+  nav.querySelectorAll('.scene-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      nav.querySelectorAll('.scene-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentScene = btn.dataset.scene;
+      animateRender(() => { render(); renderSceneNav(); });
+    });
+  });
+}
+
+function renderRecent() {
+  const bar = document.getElementById('recentBar');
+  const list = document.getElementById('recentList');
+  if (!recentVisits.length) { bar.style.display = 'none'; return; }
+  bar.style.display = 'flex';
+  list.innerHTML = recentVisits.map(id => {
+    const t = toolsData.find(x => x.id === id);
+    if (!t) return '';
+    return `<a class="recent-item" href="${t.url}" target="_blank">${t.icon} ${t.name}</a>`;
+  }).join('');
+}
+
+function resetAll() {
+  currentCat = 'all'; currentScene = 'all'; searchQuery = '';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('nav').querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  const allBtn = document.getElementById('nav').querySelector('[data-cat="all"]');
+  if (allBtn) allBtn.classList.add('active');
+  animateRender(() => render());
 }
 
 function renderSubNav() {
@@ -986,23 +1117,29 @@ function render() {
   const total = document.getElementById('totalStat');
   let data = toolsData;
   if (currentCat !== 'all') data = data.filter(t => t.cat === currentCat);
+  if (currentScene !== 'all') { const s = scenes.find(sc => sc.key === currentScene); if (s) data = data.filter(s.match); }
   if (currentSubCat !== 'all' && subCats[currentCat]) data = data.filter(t => toolSubCats[t.id] === currentSubCat);
   document.getElementById('eduBanner').style.display = currentCat === 'edu' ? 'flex' : 'none';
-  renderSubNav();
+  renderSubNav(); renderSceneNav();
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
     data = data.filter(t => t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q) || t.tags.some(tg => tg.toLowerCase().includes(q)));
   }
+  if (sortMode === 'hot') {
+    data = [...data].sort((a, b) => (clickCounts[b.id]||0) - (clickCounts[a.id]||0));
+  } else if (sortMode === 'rating') {
+    data = [...data].sort((a, b) => b.rating - a.rating);
+  }
   total.textContent = lang === 'zh' ? `共 ${data.length} 个工具` : `${data.length} tools`;
   if (!data.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="big">🔍</div><p>${lang==='zh'?'没有找到匹配的工具':'No tools found'}</p></div>`;
+    grid.innerHTML = `<div class="empty-state"><div class="big">🔍</div><p>${lang==='zh'?'没有找到匹配的工具':'No tools found'}</p><p class="hint">${i18n.emptyHint[lang]}</p></div>`;
     updateFavCount(); return;
   }
   grid.innerHTML = data.map((t, i) => {
     const stars = '★'.repeat(Math.round(t.rating)) + '☆'.repeat(5 - Math.round(t.rating));
     const isFav = favorites.includes(t.id);
     const priceTag = t.price === 'free' ? 'free' : t.price === 'paid' ? 'paid' : 'freemium';
-    const vpnClass = t.tags.includes('需魔法') ? ' vpn' : '';
+    const clicks = clickCounts[t.id]||0;
     return `<div class="card" data-url="${t.url}" data-id="${t.id}" style="animation-delay:${i*0.03}s">
       <div class="card-body">
         <div class="card-top">
@@ -1011,7 +1148,7 @@ function render() {
         </div>
         <div class="card-tags">
           <span class="tag ${priceTag}">${lang==='zh'?(t.price==='free'?'免费':t.price==='paid'?'付费':'免费+'):t.price.charAt(0).toUpperCase()+t.price.slice(1)}</span>
-          ${t.tags.slice(0,3).map(tg => `<span class="tag${tg==='需魔法'?' vpn':''}">${tg==='需魔法'?i18n.vpnTag[lang]:tg}</span>`).join('')}
+          ${t.tags.slice(0,3).map(tg => `<span class="tag${tg==='需魔法'?' vpn':''}${clicks>10?' hot':''}">${tg==='需魔法'?i18n.vpnTag[lang]:tg}</span>`).join('')}
         </div>
         <div class="card-desc">${lang==='en'&&t.descEn?t.descEn:t.desc}</div>
         <div class="card-footer">
@@ -1026,8 +1163,14 @@ function render() {
     bindCardTilt(card);
     card.addEventListener('click', e => {
       if (e.target.closest('.fav-btn')) return;
-      const url = card.dataset.url;
-      if (url) window.open(url, '_blank');
+      const id = card.dataset.id, url = card.dataset.url;
+      if (!url) return;
+      clickCounts[id] = (clickCounts[id]||0) + 1;
+      localStorage.setItem('ai_clicks', JSON.stringify(clickCounts));
+      recentVisits = [id, ...recentVisits.filter(v => v !== id)].slice(0, 8);
+      localStorage.setItem('ai_recent', JSON.stringify(recentVisits));
+      renderRecent();
+      window.open(url, '_blank');
     });
   });
   document.querySelectorAll('.fav-btn').forEach(btn => {
@@ -1071,7 +1214,11 @@ function applyLang() {
   document.getElementById('searchInput').placeholder = i18n.searchPlaceholder[l];
   document.getElementById('favTitle').textContent = i18n.favTitle[l];
   document.getElementById('langLabel').textContent = l === 'zh' ? 'EN' : '中';
-  renderNav(); render(); renderFav(); renderSubNav();
+  document.getElementById('recentLabel').textContent = i18n.recentLabel[l];
+  document.getElementById('sortDefault').textContent = i18n.sortDefault[l];
+  document.getElementById('sortHot').textContent = i18n.sortHot[l];
+  document.getElementById('sortRating').textContent = i18n.sortRating[l];
+  renderNav(); render(); renderFav(); renderSubNav(); renderSceneNav(); renderRecent();
   const banner = document.getElementById('eduBanner');
   if (banner) banner.innerHTML = i18n.eduBanner[l];
 }
@@ -1082,7 +1229,17 @@ document.getElementById('langToggle').addEventListener('click', () => {
 });
 
 /* ========== SEARCH ========== */
-document.getElementById('searchInput').addEventListener('input', e => { searchQuery = e.target.value; animateRender(() => render()); });
+document.getElementById('searchInput').addEventListener('input', e => { searchQuery = e.target.value; currentScene = 'all'; animateRender(() => { render(); renderSceneNav(); }); });
+
+/* ========== SORT ========== */
+document.querySelectorAll('.sort-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    sortMode = this.dataset.sort;
+    animateRender(() => render());
+  });
+});
 
 /* ========== FAV SIDEBAR ========== */
 document.getElementById('favToggle').addEventListener('click', () => {
@@ -1153,16 +1310,14 @@ document.getElementById('fbInput').addEventListener('input', updateFbCount);
 document.getElementById('fbSubmit').addEventListener('click', function() {
   var txt = document.getElementById('fbInput').value.trim();
   if (!txt) return;
-  var btn = document.getElementById('fbSubmit');
-  btn.disabled = true;
-  btn.textContent = lang === 'zh' ? '提交中...' : 'Submitting...';
-  setTimeout(function() {
-    document.querySelector('.feedback-body').style.display = 'none';
-    document.getElementById('feedbackSuccess').style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = lang === 'zh' ? '提交' : 'Submit';
-    setTimeout(closeFeedback, 1800);
-  }, 600);
+  var typeLabels = {bug:'🐛 Bug',idea:'💡 Suggestion',tool:'🔧 Tool Recommendation',other:'📝 Other'};
+  var title = '[' + typeLabels[fbType].split(' ')[1] + '] ' + txt.slice(0, 60);
+  var body = '## ' + typeLabels[fbType] + '\n\n' + txt + '\n\n---\n*Submitted via AI 工具导航*';
+  var repo = 'CP102-BOT/ai-daohang';
+  window.open('https://github.com/' + repo + '/issues/new?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body), '_blank');
+  document.querySelector('.feedback-body').style.display = 'none';
+  document.getElementById('feedbackSuccess').style.display = 'block';
+  setTimeout(function() { closeFeedback(); }, 2000);
 });
 
 /* ========== BACK TO TOP ========== */
@@ -1177,6 +1332,8 @@ document.documentElement.setAttribute('data-theme', savedTheme);
 document.getElementById('themeToggle').textContent = savedTheme === 'light' ? '☀️' : '🌙';
 applyLang();
 updateFavCount();
+renderSceneNav();
+renderRecent();
 </script>
 </body>
 </html>
