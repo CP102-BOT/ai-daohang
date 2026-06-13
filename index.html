@@ -781,6 +781,9 @@ body {
     <div id="eduBanner" class="stat" style="display:none;background:linear-gradient(135deg,rgba(139,92,246,0.08),rgba(168,85,247,0.08));border-color:rgba(139,92,246,0.2);padding:12px 20px;font-size:13px;width:100%;border-radius:14px">
       🎓 <strong>大学专区</strong> — 专为大学生打造的 AI 工具合集：论文写作、文献搜索、数学计算、PPT制作、课堂笔记 🧙 <strong style="color:#f87171">需魔法</strong> 标签表示需要科学上网
     </div>
+    <div id="platformBanner" class="stat" style="display:none;background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(147,51,234,0.08));border-color:rgba(59,130,246,0.2);padding:12px 20px;font-size:13px;width:100%;border-radius:14px">
+      ☁️ <strong>大模型开放平台</strong> — 国内外主流 AI 大模型 API 开放平台大全，为开发者和企业提供模型调用、微调、部署等服务
+    </div>
   </div>
   <div class="grid" id="grid"></div>
 </div>
@@ -924,6 +927,29 @@ const toolsData = [
   {id:"o8",name:"Fireflies.ai",icon:"🔥",cat:"other",catName:"其他工具",rating:4.3,url:"https://fireflies.ai",tags:["会议转录","AI笔记","协作","需魔法"],price:"freemium",desc:"AI 会议记录助手，自动转录、摘要和标记会议内容，集成 Zoom、Teams 等平台。",descEn:"AI meeting assistant that auto-transcribes, summarizes and tags meetings across Zoom, Teams and more."},
   {id:"o9",name:"Taskade",icon:"📋",cat:"other",catName:"其他工具",rating:4.2,url:"https://www.taskade.com",tags:["项目管理","AI协作","思维导图","需魔法"],price:"freemium",desc:"AI 驱动的项目管理和协作平台，支持思维导图、任务列表和 AI 自动生成工作流。",descEn:"AI-powered project management with mind maps, task lists and AI workflows."},
   {id:"o10",name:"Mem",icon:"🧠",cat:"other",catName:"其他工具",rating:4.1,url:"https://mem.ai",tags:["AI笔记","知识管理","自动整理","需魔法"],price:"freemium",desc:"AI 驱动的笔记工具，自动整理和关联你的笔记内容，像你的第二个大脑。",descEn:"AI-powered notes app that automatically organizes and connects your notes. Your second brain."},
+
+  /* ===== AI 大模型开放平台 ===== */
+  {id:"p1",name:"OpenAI API",icon:"🟢",cat:"platform",catName:"大模型平台",rating:4.9,url:"https://platform.openai.com",tags:["GPT-4o","o1","o3","DALL·E","需魔法"],price:"paid",desc:"全球最知名的 AI 模型 API 平台，提供 GPT-4o、o1、o3 推理模型、DALL·E 图像生成、Whisper 语音等全系列模型接口。",descEn:"The world's most renowned AI model API platform offering GPT-4o, o1, o3 reasoning, DALL·E image generation, Whisper speech and more."},
+  {id:"p2",name:"Anthropic API",icon:"🧠",cat:"platform",catName:"大模型平台",rating:4.8,url:"https://docs.anthropic.com/en/docs",tags:["Claude 4","Claude 3.5","长文本","安全","需魔法"],price:"paid",desc:"Anthropic 的 Claude 模型 API 平台，以超长上下文（200K tokens）、安全对齐和深度推理能力著称，适合复杂分析任务。",descEn:"Anthropic's Claude model API platform with 200K context window, safety alignment and deep reasoning for complex analysis."},
+  {id:"p3",name:"Google AI Studio",icon:"🔵",cat:"platform",catName:"大模型平台",rating:4.7,url:"https://aistudio.google.com",tags:["Gemini 2.0","Gemma","多模态","需魔法"],price:"free",desc:"Google 的 AI 模型平台，提供 Gemini 系列多模态模型 API，原生支持图像、音频、视频理解和生成。免费额度慷慨。",descEn:"Google's AI model platform with Gemini multimodal API, native image/audio/video understanding. Generous free tier."},
+  {id:"p4",name:"Together AI",icon:"🔮",cat:"platform",catName:"大模型平台",rating:4.5,url:"https://www.together.ai",tags:["开源模型","云推理","Llama","DeepSeek","需魔法"],price:"paid",desc:"开源大模型云推理平台，提供 Llama、DeepSeek、Mixtral 等上百种开源模型的 API 调用服务，延迟低性价比高。",descEn:"Open-source model cloud inference platform. API access to hundreds of models including Llama, DeepSeek, Mixtral. Low latency."},
+  {id:"p5",name:"Fireworks AI",icon:"🎆",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://fireworks.ai",tags:["开源模型","快速推理","微调","需魔法"],price:"paid",desc:"专注于开源模型快速推理的平台，支持 Llama、DeepSeek、Qwen 等模型的 API 调用和微调服务，推理速度业界领先。",descEn:"Fast inference platform for open-source models. API access and fine-tuning for Llama, DeepSeek, Qwen. Industry-leading speed."},
+  {id:"p6",name:"Mistral AI",icon:"🌬️",cat:"platform",catName:"大模型平台",rating:4.5,url:"https://console.mistral.ai",tags:["Mistral","Mixtral","Le Chat","开源","需魔法"],price:"freemium",desc:"法国 AI 公司，提供 Mistral Large、Mixtral 8x22B 等高效开源模型 API，以高性价比和出色的多语言能力闻名。",descEn:"French AI company offering Mistral Large, Mixtral 8x22B efficient open-source APIs. Great value and multilingual capability."},
+  {id:"p7",name:"Cohere",icon:"🌐",cat:"platform",catName:"大模型平台",rating:4.3,url:"https://dashboard.cohere.com",tags:["Command R","Embed","RAG","企业级","需魔法"],price:"paid",desc:"企业级 AI 模型平台，专注 RAG（检索增强生成）和嵌入（Embedding）场景，Command R 系列模型检索能力突出。",descEn:"Enterprise AI platform focused on RAG and embedding. Command R series excels at retrieval-augmented generation."},
+  {id:"p8",name:"Amazon Bedrock",icon:"☁️",cat:"platform",catName:"大模型平台",rating:4.5,url:"https://aws.amazon.com/bedrock",tags:["AWS","托管服务","Claude","Llama","需魔法"],price:"paid",desc:"AWS 完全托管的模型平台，提供 Claude、Llama、Mistral 等多种基础模型，与 AWS 生态系统深度集成。",descEn:"AWS fully-managed model platform with Claude, Llama, Mistral and more. Deep AWS ecosystem integration."},
+  {id:"p9",name:"Azure OpenAI",icon:"🟦",cat:"platform",catName:"大模型平台",rating:4.5,url:"https://azure.microsoft.com/products/ai-services/openai-service",tags:["微软","OpenAI","企业级","合规"],price:"paid",desc:"微软 Azure 提供的 OpenAI 模型服务，企业级合规保障，支持 GPT-4o、o1 等模型，隐私和网络安全可靠。",descEn:"Microsoft Azure's OpenAI model service with enterprise compliance. GPT-4o, o1 models with privacy and security guarantees."},
+  {id:"p10",name:"Groq API",icon:"⚡",cat:"platform",catName:"大模型平台",rating:4.5,url:"https://console.groq.com",tags:["极速推理","LPU","Llama","Mixtral","需魔法"],price:"free",desc:"LPU 推理引擎驱动的极速 API 平台，提供 Llama、Mixtral、Gemma 等开源模型，推理速度颠覆性极快，有免费额度。",descEn:"LPU-powered ultra-fast inference API. Llama, Mixtral, Gemma models with revolutionary speed. Free tier available."},
+
+  {id:"p11",name:"百度千帆",icon:"🐻",cat:"platform",catName:"大模型平台",rating:4.2,url:"https://qianfan.cloud.baidu.com",tags:["文心系列","ERNIE","中文优化","国内可用"],price:"paid",desc:"百度大模型 API 平台，提供文心一言 ERNIE 系列模型调用，中文理解能力强，与百度搜索和文库深度整合。",descEn:"Baidu's LLM API platform with ERNIE model series. Strong Chinese comprehension, integrated with Baidu's ecosystem."},
+  {id:"p12",name:"阿里百炼",icon:"🌊",cat:"platform",catName:"大模型平台",rating:4.3,url:"https://bailian.console.aliyun.com",tags:["通义系列","Qwen","阿里云","国内可用"],price:"paid",desc:"阿里云大模型服务平台，提供通义千问 Qwen 系列模型 API 调用、模型训练和部署服务，覆盖丰富应用场景。",descEn:"Alibaba Cloud's LLM platform with Qwen model API, training and deployment services for diverse scenarios."},
+  {id:"p13",name:"智谱开放平台",icon:"🔮",cat:"platform",catName:"大模型平台",rating:4.3,url:"https://open.bigmodel.cn",tags:["GLM","ChatGLM","CodeGeeX","国内可用"],price:"paid",desc:"智谱 AI 的开放平台，提供 GLM-4、ChatGLM 系列模型 API，支持工具调用、知识库和模型微调，适合中文应用开发。",descEn:"Zhipu AI's open platform with GLM-4 and ChatGLM API. Supports tool calling, knowledge bases and fine-tuning."},
+  {id:"p14",name:"月之暗面开放平台",icon:"📎",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://platform.moonshot.cn",tags:["Moonshot","超长上下文","文件处理","国内可用"],price:"paid",desc:"月之暗面（Moonshot AI）的开放平台，Kimi 背后的模型 API，以超长上下文处理能力著称，适合文档分析场景。",descEn:"Moonshot AI's open platform. Kimi's underlying model API known for ultra-long context. Ideal for document analysis."},
+  {id:"p15",name:"DeepSeek API",icon:"🦾",cat:"platform",catName:"大模型平台",rating:4.7,url:"https://platform.deepseek.com",tags:["DeepSeek V3","R1","推理","国内可用"],price:"paid",desc:"深度求索的模型 API 平台，提供 DeepSeek-V3 和 DeepSeek-R1 模型，推理能力和编程水平顶尖，定价极具竞争力。",descEn:"DeepSeek's model API platform with V3 and R1 models. Top-tier reasoning and coding ability. Extremely competitive pricing."},
+  {id:"p16",name:"讯飞星火 API",icon:"🔥",cat:"platform",catName:"大模型平台",rating:4.1,url:"https://www.xfyun.cn/doc/spark",tags:["星火","语音","多模态","国内可用"],price:"paid",desc:"科大讯飞星火大模型 API，语音识别和合成能力顶尖，提供文本生成、多模态理解等全方位 AI 能力。",descEn:"iFlytek's Spark LLM API with industry-leading speech recognition and synthesis. Full-stack AI capabilities."},
+  {id:"p17",name:"火山引擎",icon:"🌋",cat:"platform",catName:"大模型平台",rating:4.2,url:"https://www.volcengine.com/product/doubao",tags:["豆包","字节跳动","多模态","国内可用"],price:"paid",desc:"字节跳动火山引擎大模型 API，提供豆包系列模型，覆盖文本生成、图像理解、语音等多种能力，性价比高。",descEn:"ByteDance's Volcengine LLM API with Doubao model series. Text, image, speech capabilities with great value."},
+  {id:"p18",name:"零一万物 API",icon:"𝟙",cat:"platform",catName:"大模型平台",rating:4.1,url:"https://platform.lingyiwanwu.com",tags:["Yi系列","开源","长文本","国内可用"],price:"paid",desc:"李开复创办的零一万物大模型 API，Yi 系列模型在开源社区表现亮眼，支持超长上下文和复杂推理。",descEn:"01.AI's model API platform. Yi series models excel in open-source community with long context and complex reasoning."},
+  {id:"p19",name:"MiniMax API",icon:"🤖",cat:"platform",catName:"大模型平台",rating:4.1,url:"https://platform.minimaxi.com",tags:["MiniMax","语音","视频","国内可用"],price:"paid",desc:"MiniMax 的大模型 API，提供 abab 系列文本模型和语音、视频生成能力，海螺 AI 同款模型。",descEn:"MiniMax's LLM API with abab series text models and speech/video generation. Powers Hailuo AI."},
+  {id:"p20",name:"腾讯混元",icon:"🐧",cat:"platform",catName:"大模型平台",rating:4.0,url:"https://cloud.tencent.com/product/hunyuan",tags:["混元","腾讯云","多模态","国内可用"],price:"paid",desc:"腾讯混元大模型 API，腾讯云提供，支持文本生成、图像理解与生成、视频分析等多种模型能力。",descEn:"Tencent's Hunyuan LLM API on Tencent Cloud. Text generation, image understanding/generation, video analysis."},
 ];
 
 /* ========== SCENES ========== */
@@ -936,6 +962,7 @@ const scenes = [
   {key:'translate',name:{zh:'🌐 翻译',en:'🌐 Translate'},match:t=>['e8','e9'].includes(t.id)},
   {key:'presentation',name:{zh:'📊 做PPT',en:'📊 PPT'},match:t=>['w7','w8','e15','e16'].includes(t.id)},
   {key:'music-audio',name:{zh:'🎵 音乐/音频',en:'🎵 Music'},match:t=>['a1','a2','a12'].includes(t.id)},
+  {key:'platform',name:{zh:'☁️ 大模型平台',en:'☁️ AI Platforms'},match:t=>t.cat==='platform'},
 ];
 
 /* ========== STATE ========== */
@@ -948,7 +975,7 @@ let lang = localStorage.getItem('ai_lang') || 'zh';
 const cats = [
   {key:'all',name:'🏠 全部'},{key:'chat',name:'💬 聊天对话'},{key:'image',name:'🎨 图像生成'},
   {key:'code',name:'💻 编程开发'},{key:'write',name:'✍️ 写作办公'},{key:'audio',name:'🎵 音视频'},
-  {key:'edu',name:'🎓 大学专区'},{key:'other',name:'🔧 其他工具'}
+  {key:'edu',name:'🎓 大学专区'},{key:'platform',name:'☁️ 大模型平台'},{key:'other',name:'🔧 其他工具'}
 ];
 const subCats = {
   edu: [
@@ -959,6 +986,11 @@ const subCats = {
     {key:'study',name:{zh:'📖 学习辅助',en:'📖 Study Aids'}},
     {key:'ppt',name:{zh:'📊 PPT制作',en:'📊 Presentations'}},
     {key:'translate',name:{zh:'🌐 翻译工具',en:'🌐 Translation'}},
+  ],
+  platform: [
+    {key:'all',name:{zh:'☁️ 全部',en:'☁️ All'}},
+    {key:'domestic',name:{zh:'🇨🇳 国内平台',en:'🇨🇳 Domestic'}},
+    {key:'international',name:{zh:'🌍 国外平台',en:'🌍 International'}},
   ]
 };
 const toolSubCats = {
@@ -967,6 +999,10 @@ const toolSubCats = {
   e10:'math',e11:'math',e12:'math',
   e13:'study',e14:'study',e17:'study',e18:'study',e19:'study',e20:'study',e21:'study',
   e15:'ppt',e16:'ppt',
+  p1:'international',p2:'international',p3:'international',p4:'international',p5:'international',
+  p6:'international',p7:'international',p8:'international',p9:'international',p10:'international',
+  p11:'domestic',p12:'domestic',p13:'domestic',p14:'domestic',p15:'domestic',
+  p16:'domestic',p17:'domestic',p18:'domestic',p19:'domestic',p20:'domestic',
 };
 
 const i18n = {
@@ -976,10 +1012,11 @@ const i18n = {
   cat_all:{zh:'🏠 全部',en:'🏠 All'},cat_chat:{zh:'💬 聊天对话',en:'💬 Chat'},
   cat_image:{zh:'🎨 图像生成',en:'🎨 Image'},cat_code:{zh:'💻 编程开发',en:'💻 Coding'},
   cat_write:{zh:'✍️ 写作办公',en:'✍️ Writing'},cat_audio:{zh:'🎵 音视频',en:'🎵 Media'},
-  cat_edu:{zh:'🎓 大学专区',en:'🎓 Academia'},cat_other:{zh:'🔧 其他工具',en:'🔧 Other'},
+  cat_edu:{zh:'🎓 大学专区',en:'🎓 Academia'},cat_platform:{zh:'☁️ 大模型平台',en:'☁️ AI Platforms'},cat_other:{zh:'🔧 其他工具',en:'🔧 Other'},
   price_free:{zh:'免费',en:'Free'},price_paid:{zh:'付费',en:'Paid'},price_freemium:{zh:'免费+',en:'Free+'},
   vpnTag:{zh:'🧙 需魔法',en:'🧙 VPN'},
   eduBanner:{zh:'🎓 <strong>大学专区</strong> — 专为大学生打造的 AI 工具合集：论文写作、文献搜索、数学计算、PPT制作、课堂笔记 🧙 <strong style="color:#f87171">需魔法</strong> 标签表示需要科学上网',en:'🎓 <strong>Academia</strong> — AI tools for students: paper writing, literature search, math, PPTs, note-taking 🧙 <strong style="color:#f87171">Need VPN</strong> means requiring internet proxy'},
+  platformBanner:{zh:'☁️ <strong>大模型开放平台</strong> — 国内外主流 AI 大模型 API 开放平台大全，为开发者和企业提供模型调用、微调、部署等服务',en:'☁️ <strong>AI Model Platforms</strong> — A comprehensive collection of domestic and international LLM API platforms for developers and enterprises'},
   recentLabel:{zh:'🕐 最近访问',en:'🕐 Recent'},
   emptyHint:{zh:'试试换个关键词搜索，或者浏览 <a onclick="resetAll()">全部工具</a>',en:'Try another keyword, or browse <a onclick="resetAll()">all tools</a>'},
   sortDefault:{zh:'📌 默认',en:'📌 Default'},sortHot:{zh:'🔥 热门',en:'🔥 Hot'},sortRating:{zh:'⭐ 评分',en:'⭐ Rating'},
@@ -1120,6 +1157,7 @@ function render() {
   if (currentScene !== 'all') { const s = scenes.find(sc => sc.key === currentScene); if (s) data = data.filter(s.match); }
   if (currentSubCat !== 'all' && subCats[currentCat]) data = data.filter(t => toolSubCats[t.id] === currentSubCat);
   document.getElementById('eduBanner').style.display = currentCat === 'edu' ? 'flex' : 'none';
+  document.getElementById('platformBanner').style.display = currentCat === 'platform' ? 'flex' : 'none';
   renderSubNav(); renderSceneNav();
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
@@ -1221,6 +1259,8 @@ function applyLang() {
   renderNav(); render(); renderFav(); renderSubNav(); renderSceneNav(); renderRecent();
   const banner = document.getElementById('eduBanner');
   if (banner) banner.innerHTML = i18n.eduBanner[l];
+  const pbanner = document.getElementById('platformBanner');
+  if (pbanner) pbanner.innerHTML = i18n.platformBanner[l];
 }
 document.getElementById('langToggle').addEventListener('click', () => {
   lang = lang === 'zh' ? 'en' : 'zh';
