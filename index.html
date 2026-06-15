@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AI 工具导航，收录92款国内外AI工具。涵盖聊天对话、图像生成、编程开发、写作办公、音视频、大学学习等分类，支持搜索和收藏，一站式发现好用AI工具。">
-<meta name="keywords" content="AI工具导航,AI工具箱,人工智能工具,ChatGPT,Claude,DeepSeek,Midjourney,AI绘画,AI写作,AI编程,AI视频,国外AI工具,AI导航站">
-<meta property="og:title" content="AI 工具导航 - 92款AI工具收录">
-<meta property="og:description" content="收录92款国内外AI工具，聊天/图像/编程/写作/音视频全分类覆盖。">
+<meta name="description" content="AI 工具导航，收录140+款国内外AI工具。涵盖聊天对话、图像生成、编程开发、写作办公、音视频、大学学习、大模型平台、AI框架等分类，支持搜索和收藏，一站式发现好用AI工具。">
+<meta name="keywords" content="AI工具导航,AI工具箱,人工智能工具,ChatGPT,Claude,DeepSeek,Midjourney,AI绘画,AI写作,AI编程,AI视频,AI框架,Ollama,LangChain,大模型平台,国外AI工具,AI导航站">
+<meta property="og:title" content="AI 工具导航 - 140+款AI工具收录">
+<meta property="og:description" content="收录140+款国内外AI工具，聊天/图像/编程/写作/音视频/大模型平台/AI框架全分类覆盖。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cp102-bot.github.io/ai-daohang/">
 <title>AI 工具导航 - 收录92款AI工具 | ChatGPT/Claude/Midjourney等</title>
@@ -784,6 +784,9 @@ body {
     <div id="platformBanner" class="stat" style="display:none;background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(147,51,234,0.08));border-color:rgba(59,130,246,0.2);padding:12px 20px;font-size:13px;width:100%;border-radius:14px">
       ☁️ <strong>大模型开放平台</strong> — 国内外主流 AI 大模型 API 开放平台大全，为开发者和企业提供模型调用、微调、部署等服务
     </div>
+    <div id="frameworkBanner" class="stat" style="display:none;background:linear-gradient(135deg,rgba(16,185,129,0.08),rgba(52,211,153,0.08));border-color:rgba(16,185,129,0.2);padding:12px 20px;font-size:13px;width:100%;border-radius:14px">
+      🧩 <strong>AI 框架与本地工具</strong> — LLM 开发框架、Agent 编排、本地推理引擎、向量数据库，为 AI 应用开发提供全栈工具链
+    </div>
   </div>
   <div class="grid" id="grid"></div>
 </div>
@@ -959,6 +962,31 @@ const toolsData = [
   {id:"p25",name:"DeepInfra",icon:"⚙️",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://deepinfra.com",tags:["无服务器","免费额度","Llama","DeepSeek","需魔法"],price:"freemium",desc:"无服务器 AI 推理平台，提供 Llama、DeepSeek、Qwen 等模型的 API，新用户送免费额度，按量计费价格低廉。",descEn:"Serverless AI inference platform. API for Llama, DeepSeek, Qwen models. Free credits for new users, pay-per-use pricing."},
   {id:"p26",name:"Fal.ai",icon:"⚡",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://fal.ai",tags:["图像生成","视频生成","免费额度","快速推理","需魔法"],price:"freemium",desc:"AI 媒体生成推理平台，专注于图像和视频生成模型，提供 Flux、Runway 等模型的 API，免费额度可体验。",descEn:"AI media generation inference platform focused on image/video models. API for Flux, Runway models with free credits."},
   {id:"p27",name:"Hyperbolic",icon:"🌀",cat:"platform",catName:"大模型平台",rating:4.3,url:"https://hyperbolic.xyz",tags:["GPU云","推理","开源模型","免费额度","需魔法"],price:"freemium",desc:"AI 计算平台，提供 GPU 租赁和模型推理服务，有免费 API 调用额度，支持 Llama、Qwen、DeepSeek 等开源模型。",descEn:"AI compute platform with GPU rental and model inference. Free API tier for Llama, Qwen, DeepSeek open-source models."},
+
+  /* ===== AI 框架与本地工具 ===== */
+  {id:"f1",name:"Ollama",icon:"🦙",cat:"framework",catName:"AI框架",rating:4.8,url:"https://ollama.ai",tags:["本地运行","开源模型","Llama","DeepSeek"],price:"free",desc:"最流行的本地大模型运行工具，一键下载和运行 Llama、DeepSeek、Qwen 等开源模型，支持 macOS/Linux/Windows。",descEn:"Most popular local LLM runner. One-click download and run Llama, DeepSeek, Qwen models on macOS/Linux/Windows."},
+  {id:"f2",name:"LangChain",icon:"⛓️",cat:"framework",catName:"AI框架",rating:4.7,url:"https://www.langchain.com",tags:["LLM框架","RAG","Agent","开源"],price:"free",desc:"最流行的 LLM 应用开发框架，提供链式调用、RAG、Agent 等抽象层，支持 Python/JavaScript，生态极为丰富。",descEn:"Most popular LLM application framework with chaining, RAG, Agent abstractions. Python/JS. Vast ecosystem."},
+  {id:"f3",name:"LangGraph",icon:"🔀",cat:"framework",catName:"AI框架",rating:4.6,url:"https://langchain-ai.github.io/langgraph",tags:["Agent编排","状态图","工作流","开源"],price:"free",desc:"LangChain 推出的 Agent 编排框架，基于图状态机构建复杂多步骤 AI 工作流，适合生产级 Agent 应用。",descEn:"LangChain's agent orchestration framework. Graph-based state machine for complex multi-step AI workflows."},
+  {id:"f4",name:"CrewAI",icon:"🚢",cat:"framework",catName:"AI框架",rating:4.5,url:"https://www.crewai.com",tags:["多Agent","协作","角色编排","开源"],price:"free",desc:"多 Agent 协作框架，定义不同角色的 AI Agent 协同完成任务，适合团队协作场景的自动化。",descEn:"Multi-agent collaboration framework. Define role-based AI agents that work together to complete tasks."},
+  {id:"f5",name:"AutoGPT",icon:"🤖",cat:"framework",catName:"AI框架",rating:4.3,url:"https://github.com/Significant-Gravitas/AutoGPT",tags:["自主Agent","任务规划","开源"],price:"free",desc:"最早的自主 AI Agent 项目，给定目标后自动规划执行步骤、调用工具、迭代优化，实现自主任务完成。",descEn:"Pioneering autonomous AI agent. Sets goals, plans steps, calls tools, iterates to complete tasks independently."},
+  {id:"f6",name:"vLLM",icon:"⚡",cat:"framework",catName:"AI框架",rating:4.7,url:"https://github.com/vllm-project/vllm",tags:["高性能推理","PagedAttention","生产部署","开源"],price:"free",desc:"高性能开源 LLM 推理引擎，PagedAttention 技术实现超快推理和低显存占用，生产部署首选。",descEn:"High-performance open-source LLM inference engine. PagedAttention for ultra-fast inference with low VRAM."},
+  {id:"f7",name:"LM Studio",icon:"💻",cat:"framework",catName:"AI框架",rating:4.6,url:"https://lmstudio.ai",tags:["本地模型","图形界面","聊天","API服务"],price:"free",desc:"桌面端本地大模型运行工具，提供友好的图形界面，支持下载和运行 HuggingFace 上的 GGUF 格式模型。",descEn:"Desktop local LLM runner with friendly GUI. Download and run GGUF models from HuggingFace."},
+  {id:"f8",name:"llama.cpp",icon:"🦙",cat:"framework",catName:"AI框架",rating:4.7,url:"https://github.com/ggerganov/llama.cpp",tags:["C++推理","CPU推理","量化","开源"],price:"free",desc:"纯 C/C++ 实现的 LLM 推理引擎，支持 CPU 和 GPU 混合推理，量化技术支持在普通电脑上运行大模型。",descEn:"Pure C/C++ LLM inference engine. CPU/GPU hybrid inference with quantization for running LLMs on commodity hardware."},
+  {id:"f9",name:"ChromaDB",icon:"🟣",cat:"framework",catName:"AI框架",rating:4.5,url:"https://www.trychroma.com",tags:["向量数据库","嵌入","RAG","开源"],price:"free",desc:"开源向量数据库，专为 AI 应用设计的嵌入式向量存储，API 简洁，适合 RAG 和语义搜索场景。",descEn:"Open-source vector database built for AI apps. Simple API for embeddings, RAG and semantic search."},
+  {id:"f10",name:"Milvus",icon:"🔮",cat:"framework",catName:"AI框架",rating:4.5,url:"https://milvus.io",tags:["向量数据库","分布式","高性能","开源"],price:"free",desc:"企业级分布式向量数据库，支持万亿级向量检索，高性能 ANN 搜索，适合大规模 RAG 和推荐系统。",descEn:"Enterprise-grade distributed vector database. Trillion-scale vector retrieval for large-scale RAG and recommendations."},
+  {id:"f11",name:"Pinecone",icon:"🌲",cat:"framework",catName:"AI框架",rating:4.4,url:"https://www.pinecone.io",tags:["向量数据库","托管服务","Serverless","需魔法"],price:"freemium",desc:"托管向量数据库服务，无需运维即可使用的 Serverless 向量存储，RAG 应用首选，有免费额度。",descEn:"Managed vector database service. Serverless vector storage for RAG apps. Free tier available."},
+  {id:"f12",name:"Weaviate",icon:"🌀",cat:"framework",catName:"AI框架",rating:4.3,url:"https://weaviate.io",tags:["向量数据库","混合搜索","开源"],price:"free",desc:"开源向量搜索引擎，支持向量搜索和关键字搜索的混合检索，内置嵌入和生成模块。",descEn:"Open-source vector search engine with hybrid vector + keyword search. Built-in embedding and generation modules."},
+  {id:"f13",name:"Gradio",icon:"🎛️",cat:"framework",catName:"AI框架",rating:4.5,url:"https://www.gradio.app",tags:["ML演示","Web UI","快速原型","开源"],price:"free",desc:"HuggingFace 出品的 ML 演示工具，几行 Python 代码即可生成交互式 Web 界面，快速展示模型效果。",descEn:"HuggingFace's ML demo tool. Create interactive web UIs with a few lines of Python to showcase models."},
+  {id:"f14",name:"Streamlit",icon:"📊",cat:"framework",catName:"AI框架",rating:4.5,url:"https://streamlit.io",tags:["数据应用","快速开发","Python","开源"],price:"free",desc:"最流行的 Python 数据应用框架，纯 Python 脚本即可构建交互式 AI 和数据可视化应用。",descEn:"Most popular Python data app framework. Build interactive AI and data visualization apps with pure Python."},
+  {id:"f15",name:"Haystack",icon:"🌾",cat:"framework",catName:"AI框架",rating:4.3,url:"https://haystack.deepset.ai",tags:["NLP管道","RAG","搜索","开源"],price:"free",desc:"开源 NLP 框架，构建搜索、QA、RAG 管道的生产级方案，支持多种向量数据库和模型后端。",descEn:"Open-source NLP framework for building search, QA and RAG pipelines. Supports multiple vector DBs and model backends."},
+  {id:"f16",name:"Flowise",icon:"🔌",cat:"framework",catName:"AI框架",rating:4.4,url:"https://flowiseai.com",tags:["无代码","LLM应用","可视化","开源"],price:"free",desc:"开源低代码 LLM 应用构建平台，拖拽式可视化编排 RAG、Agent、工作流，无需编码。",descEn:"Open-source low-code LLM app builder. Drag-and-drop visual orchestration for RAG, Agent and workflows."},
+  {id:"f17",name:"N8n AI",icon:"⚙️",cat:"framework",catName:"AI框架",rating:4.3,url:"https://n8n.io",tags:["自动化","工作流","AI集成","开源"],price:"freemium",desc:"开源工作流自动化平台，内置 AI 节点支持 LLM 调用、向量搜索、Agent 集成，连接 400+ 应用。",descEn:"Open-source workflow automation with built-in AI nodes. LLM calls, vector search, Agent integration. 400+ apps."},
+
+  /* ===== 新增其他分类工具 ===== */
+  {id:"e22",name:"Google Colab",icon:"🧪",cat:"edu",catName:"大学专区",rating:4.6,url:"https://colab.research.google.com",tags:["Notebook","GPU免费","Python","机器学习"],price:"free",desc:"Google 提供的免费 Jupyter Notebook 在线环境，内置 GPU/TPU 支持，AI 和机器学习实验首选平台。",descEn:"Google's free Jupyter Notebook environment with built-in GPU/TPU. Go-to platform for AI/ML experimentation."},
+  {id:"e23",name:"Kaggle",icon:"🏆",cat:"edu",catName:"大学专区",rating:4.6,url:"https://www.kaggle.com",tags:["数据科学","竞赛","数据集","Notebook"],price:"free",desc:"全球最大数据科学社区，免费 GPU Notebook、海量公开数据集、ML 竞赛，学习和实践机器学习的绝佳平台。",descEn:"World's largest data science community. Free GPU Notebooks, massive datasets, ML competitions for learning."},
+  {id:"a13",name:"Meshy",icon:"🧊",cat:"audio",catName:"音视频",rating:4.3,url:"https://www.meshy.ai",tags:["3D生成","文本转3D","图像转3D","需魔法"],price:"freemium",desc:"AI 3D 内容生成工具，输入文字或图片即可生成高质量 3D 模型，支持纹理和动画，游戏开发利器。",descEn:"AI 3D content generator. Text/image to high-quality 3D models with textures and animation."},
+  {id:"o11",name:"Looka",icon:"🎯",cat:"other",catName:"其他工具",rating:4.2,url:"https://looka.com",tags:["Logo设计","品牌工具","AI生成","需魔法"],price:"paid",desc:"AI Logo 和品牌标识设计工具，输入品牌名和偏好即可生成多种 Logo 方案，支持 VI 全套设计。",descEn:"AI Logo and brand identity designer. Generate logo options from your brand name and preferences."},
 ];
 
 /* ========== SCENES ========== */
@@ -972,6 +1000,7 @@ const scenes = [
   {key:'presentation',name:{zh:'📊 做PPT',en:'📊 PPT'},match:t=>['w7','w8','e15','e16'].includes(t.id)},
   {key:'music-audio',name:{zh:'🎵 音乐/音频',en:'🎵 Music'},match:t=>['a1','a2','a12'].includes(t.id)},
   {key:'platform',name:{zh:'☁️ 大模型平台',en:'☁️ AI Platforms'},match:t=>t.cat==='platform'},
+  {key:'framework',name:{zh:'🧩 AI框架',en:'🧩 Frameworks'},match:t=>t.cat==='framework'},
 ];
 
 /* ========== STATE ========== */
@@ -984,7 +1013,7 @@ let lang = localStorage.getItem('ai_lang') || 'zh';
 const cats = [
   {key:'all',name:'🏠 全部'},{key:'chat',name:'💬 聊天对话'},{key:'image',name:'🎨 图像生成'},
   {key:'code',name:'💻 编程开发'},{key:'write',name:'✍️ 写作办公'},{key:'audio',name:'🎵 音视频'},
-  {key:'edu',name:'🎓 大学专区'},{key:'platform',name:'☁️ 大模型平台'},{key:'other',name:'🔧 其他工具'}
+  {key:'edu',name:'🎓 大学专区'},{key:'platform',name:'☁️ 大模型平台'},{key:'framework',name:'🧩 AI框架'},{key:'other',name:'🔧 其他工具'}
 ];
 const subCats = {
   edu: [
@@ -1000,6 +1029,13 @@ const subCats = {
     {key:'all',name:{zh:'☁️ 全部',en:'☁️ All'}},
     {key:'domestic',name:{zh:'🇨🇳 国内平台',en:'🇨🇳 Domestic'}},
     {key:'international',name:{zh:'🌍 国外平台',en:'🌍 International'}},
+  ],
+  framework: [
+    {key:'all',name:{zh:'🧩 全部',en:'🧩 All'}},
+    {key:'agent',name:{zh:'🤖 Agent框架',en:'🤖 Agent Frameworks'}},
+    {key:'local',name:{zh:'💻 本地推理',en:'💻 Local Inference'}},
+    {key:'vector',name:{zh:'🗄️ 向量数据库',en:'🗄️ Vector DB'}},
+    {key:'app',name:{zh:'🔧 应用框架',en:'🔧 App Frameworks'}},
   ]
 };
 const toolSubCats = {
@@ -1008,12 +1044,16 @@ const toolSubCats = {
   e10:'math',e11:'math',e12:'math',
   e13:'study',e14:'study',e17:'study',e18:'study',e19:'study',e20:'study',e21:'study',
   e15:'ppt',e16:'ppt',
+  e22:'study',e23:'study',
   p1:'international',p2:'international',p3:'international',p4:'international',p5:'international',
   p6:'international',p7:'international',p8:'international',p9:'international',p10:'international',
   p11:'domestic',p12:'domestic',p13:'domestic',p14:'domestic',p15:'domestic',
   p16:'domestic',p17:'domestic',p18:'domestic',p19:'domestic',p20:'domestic',
   p21:'international',p22:'international',p23:'international',p24:'international',p25:'international',
   p26:'international',p27:'international',
+  f1:'local',f2:'agent',f3:'agent',f4:'agent',f5:'agent',f6:'local',f7:'local',f8:'local',
+  f9:'vector',f10:'vector',f11:'vector',f12:'vector',
+  f13:'app',f14:'app',f15:'app',f16:'app',f17:'app',
 };
 
 const i18n = {
@@ -1023,11 +1063,12 @@ const i18n = {
   cat_all:{zh:'🏠 全部',en:'🏠 All'},cat_chat:{zh:'💬 聊天对话',en:'💬 Chat'},
   cat_image:{zh:'🎨 图像生成',en:'🎨 Image'},cat_code:{zh:'💻 编程开发',en:'💻 Coding'},
   cat_write:{zh:'✍️ 写作办公',en:'✍️ Writing'},cat_audio:{zh:'🎵 音视频',en:'🎵 Media'},
-  cat_edu:{zh:'🎓 大学专区',en:'🎓 Academia'},cat_platform:{zh:'☁️ 大模型平台',en:'☁️ AI Platforms'},cat_other:{zh:'🔧 其他工具',en:'🔧 Other'},
+  cat_edu:{zh:'🎓 大学专区',en:'🎓 Academia'},cat_platform:{zh:'☁️ 大模型平台',en:'☁️ AI Platforms'},cat_framework:{zh:'🧩 AI框架',en:'🧩 AI Frameworks'},cat_other:{zh:'🔧 其他工具',en:'🔧 Other'},
   price_free:{zh:'免费',en:'Free'},price_paid:{zh:'付费',en:'Paid'},price_freemium:{zh:'免费+',en:'Free+'},
   vpnTag:{zh:'🧙 需魔法',en:'🧙 VPN'},
   eduBanner:{zh:'🎓 <strong>大学专区</strong> — 专为大学生打造的 AI 工具合集：论文写作、文献搜索、数学计算、PPT制作、课堂笔记 🧙 <strong style="color:#f87171">需魔法</strong> 标签表示需要科学上网',en:'🎓 <strong>Academia</strong> — AI tools for students: paper writing, literature search, math, PPTs, note-taking 🧙 <strong style="color:#f87171">Need VPN</strong> means requiring internet proxy'},
   platformBanner:{zh:'☁️ <strong>大模型开放平台</strong> — 国内外主流 AI 大模型 API 开放平台大全，为开发者和企业提供模型调用、微调、部署等服务',en:'☁️ <strong>AI Model Platforms</strong> — A comprehensive collection of domestic and international LLM API platforms for developers and enterprises'},
+  frameworkBanner:{zh:'🧩 <strong>AI 框架与本地工具</strong> — LLM 开发框架、Agent 编排、本地推理引擎、向量数据库，为 AI 应用开发提供全栈工具链',en:'🧩 <strong>AI Frameworks & Local Tools</strong> — LLM frameworks, agent orchestration, local inference engines, vector databases for full-stack AI development'},
   recentLabel:{zh:'🕐 最近访问',en:'🕐 Recent'},
   emptyHint:{zh:'试试换个关键词搜索，或者浏览 <a onclick="resetAll()">全部工具</a>',en:'Try another keyword, or browse <a onclick="resetAll()">all tools</a>'},
   sortDefault:{zh:'📌 默认',en:'📌 Default'},sortHot:{zh:'🔥 热门',en:'🔥 Hot'},sortRating:{zh:'⭐ 评分',en:'⭐ Rating'},
@@ -1169,6 +1210,7 @@ function render() {
   if (currentSubCat !== 'all' && subCats[currentCat]) data = data.filter(t => toolSubCats[t.id] === currentSubCat);
   document.getElementById('eduBanner').style.display = currentCat === 'edu' ? 'flex' : 'none';
   document.getElementById('platformBanner').style.display = currentCat === 'platform' ? 'flex' : 'none';
+  document.getElementById('frameworkBanner').style.display = currentCat === 'framework' ? 'flex' : 'none';
   renderSubNav(); renderSceneNav();
   if (searchQuery) {
     const q = searchQuery.toLowerCase();
@@ -1272,6 +1314,8 @@ function applyLang() {
   if (banner) banner.innerHTML = i18n.eduBanner[l];
   const pbanner = document.getElementById('platformBanner');
   if (pbanner) pbanner.innerHTML = i18n.platformBanner[l];
+  const fbanner = document.getElementById('frameworkBanner');
+  if (fbanner) fbanner.innerHTML = i18n.frameworkBanner[l];
 }
 document.getElementById('langToggle').addEventListener('click', () => {
   lang = lang === 'zh' ? 'en' : 'zh';
