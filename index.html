@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="AI 工具导航，收录140+款国内外AI工具大全。涵盖聊天对话、图像生成、编程开发、写作办公、音视频制作、大学学习、大模型API开放平台、AI开发框架等全分类，支持搜索筛选和收藏。">
-<meta name="keywords" content="AI工具导航,AI工具箱,人工智能工具导航,AI工具大全,ChatGPT,Claude,DeepSeek,Gemini,Midjourney,Stable Diffusion,AI绘画,AI写作,AI编程,AI视频,AI框架,Ollama,LangChain,LangGraph,大模型平台,大模型API,OpenAI API,国内AI工具,国外AI工具,免费AI工具,AI导航站">
+<meta name="description" content="AI 工具导航，收录143+款国内外AI工具大全。涵盖聊天对话、图像生成、编程开发、写作办公、音视频制作、大学学习、大模型API开放平台、AI开发框架等全分类，支持搜索筛选和收藏。">
+<meta name="keywords" content="AI工具导航,AI工具箱,人工智能工具导航,AI工具大全,ChatGPT,Claude,DeepSeek,Gemini,Midjourney,Stable Diffusion,AI绘画,AI写作,AI编程,AI视频,AI框架,Ollama,LangChain,LangGraph,大模型平台,大模型API,OpenAI API,国内AI工具,国外AI工具,免费AI工具,AI导航站,MiMo">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://cp102-bot.github.io/ai-daohang/">
 <link rel="alternate" hreflang="zh-CN" href="https://cp102-bot.github.io/ai-daohang/">
@@ -991,6 +991,9 @@ const toolsData = [
   {id:"p25",name:"DeepInfra",icon:"⚙️",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://deepinfra.com",tags:["无服务器","免费额度","Llama","DeepSeek","需魔法"],price:"freemium",desc:"无服务器 AI 推理平台，提供 Llama、DeepSeek、Qwen 等模型的 API，新用户送免费额度，按量计费价格低廉。",descEn:"Serverless AI inference platform. API for Llama, DeepSeek, Qwen models. Free credits for new users, pay-per-use pricing."},
   {id:"p26",name:"Fal.ai",icon:"⚡",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://fal.ai",tags:["图像生成","视频生成","免费额度","快速推理","需魔法"],price:"freemium",desc:"AI 媒体生成推理平台，专注于图像和视频生成模型，提供 Flux、Runway 等模型的 API，免费额度可体验。",descEn:"AI media generation inference platform focused on image/video models. API for Flux, Runway models with free credits."},
   {id:"p27",name:"Hyperbolic",icon:"🌀",cat:"platform",catName:"大模型平台",rating:4.3,url:"https://hyperbolic.xyz",tags:["GPU云","推理","开源模型","免费额度","需魔法"],price:"freemium",desc:"AI 计算平台，提供 GPU 租赁和模型推理服务，有免费 API 调用额度，支持 Llama、Qwen、DeepSeek 等开源模型。",descEn:"AI compute platform with GPU rental and model inference. Free API tier for Llama, Qwen, DeepSeek open-source models."},
+  {id:"p28",name:"小米 MiMo",icon:"📱",cat:"platform",catName:"大模型平台",rating:4.5,url:"https://platform.xiaomimimo.com",tags:["小米","MiMo","开源","国内可用"],price:"free",desc:"小米 MiMo 大模型 API 平台，提供 MiMo-V2 系列模型，限时免费调用，支持 OpenAI/Anthropic 兼容格式，代码能力强。",descEn:"Xiaomi MiMo LLM API platform with MiMo-V2 series models. Currently free with OpenAI/Anthropic compatible format."},
+  {id:"p29",name:"LLM7.io",icon:"🔢",cat:"platform",catName:"大模型平台",rating:4.2,url:"https://llm7.io",tags:["免费模型","GPT-4o","Claude","需魔法"],price:"free",desc:"免费 AI 模型聚合平台，提供 GPT-4o、Claude 等主流模型的免费调用额度，无需付费即可体验多种模型。",descEn:"Free AI model aggregation platform. Free access to GPT-4o, Claude and other models without payment."},
+  {id:"p30",name:"Pollinations.ai",icon:"🎨",cat:"platform",catName:"大模型平台",rating:4.4,url:"https://pollinations.ai",tags:["图像生成","文本生成","开源","免费","需魔法"],price:"free",desc:"开源 AI 媒体生成平台，提供图像、文本、音频生成的免费 API，支持 Flux、Stable Diffusion 等模型，无需 API Key。",descEn:"Open-source AI media generation platform with free image, text, audio APIs. Flux, Stable Diffusion models. No API key needed."},
 
   /* ===== AI 框架与本地工具 ===== */
   {id:"f1",name:"Ollama",icon:"🦙",cat:"framework",catName:"AI框架",rating:4.8,url:"https://ollama.ai",tags:["本地运行","开源模型","Llama","DeepSeek"],price:"free",desc:"最流行的本地大模型运行工具，一键下载和运行 Llama、DeepSeek、Qwen 等开源模型，支持 macOS/Linux/Windows。",descEn:"Most popular local LLM runner. One-click download and run Llama, DeepSeek, Qwen models on macOS/Linux/Windows."},
@@ -1080,6 +1083,7 @@ const toolSubCats = {
   p16:'domestic',p17:'domestic',p18:'domestic',p19:'domestic',p20:'domestic',
   p21:'international',p22:'international',p23:'international',p24:'international',p25:'international',
   p26:'international',p27:'international',
+  p28:'domestic',p29:'international',p30:'international',
   f1:'local',f2:'agent',f3:'agent',f4:'agent',f5:'agent',f6:'local',f7:'local',f8:'local',
   f9:'vector',f10:'vector',f11:'vector',f12:'vector',
   f13:'app',f14:'app',f15:'app',f16:'app',f17:'app',
